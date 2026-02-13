@@ -26,7 +26,4 @@ jobs:
         export CXX=/opt/homebrew/opt/llvm/bin/clang++
         export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
         export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-    - name: Install movici
-      run: |
         pip install .[models,dev]
