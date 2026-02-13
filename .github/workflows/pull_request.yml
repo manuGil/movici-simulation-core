@@ -2,6 +2,7 @@ name: Pull Requests
 
 on:
   pull_request:
+  workflow_dispatch:
 
 env:
   python-version: "3.13"
