@@ -30,4 +30,3 @@ runs:
     shell: bash
     run: |
       brew install libspatialite
-      brew install spatialite-tools
