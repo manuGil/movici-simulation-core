@@ -30,7 +30,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
         python-version: ["3.10", "3.11", "3.12", "3.13"]
 
     runs-on: ${{ matrix.os }}
@@ -103,8 +103,9 @@ jobs:
         os: ${{ matrix.os }}
 
     - name: Install dependencies
-      run: |
-        pip install -e .[models,dev]
+      uses: ./.github/actions/install-llvm
+      with:
+        os: ${{ matrix.os }}
 
     - name: Run tests with coverage
       run: |
