@@ -1,0 +1,32 @@
+name: "Test on macOS"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v6
+      with:
+        python-version: "3.12"
+
+    - name: Install Spatialite
+      uses: ./.github/actions/install-spatialite
+      with:
+        os: macos-latest
+
+    - name: Install build dependencies Aequilibrae
+      run: |
+        brew install llvm
+        export CC=/opt/homebrew/opt/llvm/bin/clang
+        export CXX=/opt/homebrew/opt/llvm/bin/clang++
+        export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+        export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+    - name: Install movici
+      run: |
+        pip install .[models,dev]
