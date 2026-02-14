@@ -2,6 +2,8 @@ name: Pull Requests
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ci-macos]
 
 env:
   python-version: "3.13"
