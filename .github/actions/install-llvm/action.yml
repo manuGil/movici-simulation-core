@@ -8,7 +8,7 @@ inputs:
   pip-extras:
     description: "The pip extras to install (e.g. '.[dev]')"
     required: false
-    default: ".[dev]"
+    default: ".[dev, models]"
 
 runs:
   using: "composite"
