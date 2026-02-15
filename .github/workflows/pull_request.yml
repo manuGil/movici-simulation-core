@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [ci-macos]
+  pull_request:
 
 env:
   python-version: "3.13"
@@ -53,6 +54,10 @@ jobs:
       uses: ./.github/actions/install-movici-core
       with:
         os: ${{ matrix.os }}
+
+    - name: Test Spatialite installation
+      run: |
+        python -c "import sqlite3; conn = sqlite3.connect(':memory:'); conn.enable_load_extension(True); conn.load_extension('mod_spatialite'); print('Spatialite loaded successfully')"
 
     - name: Run tests
       run: |
