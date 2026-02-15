@@ -1,4 +1,4 @@
-name: "Install LLVM (macOS)"
+name: "Install Movici Core"
 description: "Installs LLVM/Clang on macOS and pip-installs the project with the correct compiler flags. No-op on other OSes."
 
 inputs:
@@ -6,7 +6,7 @@ inputs:
     description: "The currently running os"
     required: true
   pip-extras:
-    description: "The pip extras to install (e.g. '.[dev]')"
+    description: "The pip extras to install (e.g. '.[models,dev]')"
     required: false
     default: ".[models,dev]"
 
